@@ -116,6 +116,6 @@ for v in variants:
               " --noise-type " + str(noise_type)+
               " --group-dir " + str(group_dir)
                 +
-              " >log_files/ddpg.log </dev/null 2>&1 &"
+              " >log-files/ddpg.log </dev/null 2>&1 &"
               )
      
