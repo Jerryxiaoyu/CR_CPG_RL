@@ -1,4 +1,4 @@
-from utils.instrument import VariantGenerator, variant, IO
+from  instrument import VariantGenerator, variant, IO
 import os
 from datetime import datetime
 import shutil
