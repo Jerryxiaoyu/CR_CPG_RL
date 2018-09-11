@@ -165,7 +165,7 @@ def train(env, nb_epochs, nb_epoch_cycles, render_eval, reward_scale, render, pa
             ##Evaluation statistics.
            # print('eval/return= ', np.mean(eval_episode_rewards))
             if eval_env is not None:
-                combined_stats['eval/return'] =  np.mean(eval_episode_rewards)
+                combined_stats['eval/return'] =   eval_episode_rewards
                 # combined_stats['eval/return_history'] = np.mean(eval_episode_rewards_history)
                 # combined_stats['eval/Q'] =  eval_qs
                 # combined_stats['eval/episodes'] = len(eval_episode_rewards)
