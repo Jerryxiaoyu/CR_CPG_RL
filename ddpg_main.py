@@ -131,7 +131,7 @@ if __name__ == '__main__':
     args = parse_args()
     if MPI.COMM_WORLD.Get_rank() == 0:
         dir = osp.join('log_files',
-                       datetime.datetime.now().strftime("openai-%Y-%m-%d-%H-%M-%S-%f"))
+                       datetime.datetime.now().strftime("openai-%Y-%m-%d-%H-%M"))
         
         logger.configure(dir)
 
