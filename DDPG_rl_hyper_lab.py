@@ -114,7 +114,7 @@ for v in variants:
               " --nb-train-steps " + str(nb_train_steps)+
               " --action-dim " + str(action_dim)+
               " --noise-type " + str(noise_type)+
-              " --group_dir " + str(group_dir)
+              " --group-dir " + str(group_dir)
                 +
               " >log_files/ddpg.log </dev/null 2>&1 &"
               )
