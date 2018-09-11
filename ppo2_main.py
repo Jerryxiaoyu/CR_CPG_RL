@@ -12,7 +12,7 @@ import datetime
 dir = os.path.join(os.getcwd(),'log-files',
                    datetime.datetime.now().strftime("ppo-%Y-%m-%d-%H-%M-%S-%f"))
 
-def train(env_id, num_timesteps, seed):
+def train(env_id, num_timesteps, seed, nsteps=2048, nminbatches =1024, noptepochs = 10):
     from test.baselines.common import set_global_seeds
     from test.baselines.common.vec_env.vec_normalize import VecNormalize
     from test.baselines.ppo2 import ppo2
@@ -60,11 +60,15 @@ def main():
    
     parser.add_argument('--env', help='environment ID', type=str, default='CellRobotRLEnv-v0')
     parser.add_argument('--seed', help='RNG seed', type=int, default=0)
+
+    parser.add_argument('--nsteps', type=int, default=2048)
+    parser.add_argument('--nminibatches', type=int, default=int(1024))
+    parser.add_argument('--noptepochs', type=int, default=int(10))
     parser.add_argument('--num-timesteps', type=int, default=int(1e6))
     
     args = mujoco_arg_parser().parse_args()
     logger.configure(dir)
-    train(args.env, num_timesteps=args.num_timesteps, seed=args.seed)
+    train(args.env, num_timesteps=args.num_timesteps, seed=args.seed, nsteps = args.nsteps,nminbatches=args.nminibatches, noptepochs=args.noptepochs)
 
 
 if __name__ == '__main__':
