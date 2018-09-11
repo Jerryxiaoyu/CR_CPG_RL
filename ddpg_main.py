@@ -29,9 +29,9 @@ def run(env_id, seed, noise_type, layer_norm, evaluation,action_dim=2, **kwargs)
 
     if evaluation and rank==0:
         eval_env = gym.make(env_id)
-       # eval_env = bench.Monitor(eval_env, os.path.join(logger.get_dir(), 'gym_eval'))
-        os.mkdir(os.path.join(logger.get_dir(), 'model'))
-        eval_env = gym.wrappers.Monitor(eval_env, os.path.join(logger.get_dir(), 'model'), force=True )
+        eval_env = bench.Monitor(eval_env, os.path.join(logger.get_dir(), 'gym_eval'))
+        #os.mkdir(os.path.join(logger.get_dir(), 'model'))
+        #eval_env = gym.wrappers.Monitor(eval_env, os.path.join(logger.get_dir(), 'model'), force=True )
         
         env = bench.Monitor(env, None)
     else:
