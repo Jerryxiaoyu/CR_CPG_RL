@@ -1,0 +1,6 @@
+Sat Aug 25 17:27:03 2018
+ERROR: Shadow framebuffer is not complete, error 0x8cdd
+
+Sat Aug 25 17:27:03 2018
+ERROR: Shadow framebuffer is not complete, error 0x8cdd
+

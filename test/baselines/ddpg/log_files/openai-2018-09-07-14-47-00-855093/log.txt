@@ -1,0 +1,3 @@
+Logging to log_files/openai-2018-09-07-14-47-00-855093
+rank 0: seed=0, logdir=log_files/openai-2018-09-07-14-47-00-855093
+scaling actions by 1 before executing in env

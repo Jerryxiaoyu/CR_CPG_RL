@@ -1,0 +1,24 @@
+Logging to log_files/openai-2018-09-08-15-16-54-988275
+rank 0: seed=0, logdir=log_files/openai-2018-09-08-15-16-54-988275
+scaling actions by 1 before executing in env
+Using agent with the following configuration:
+dict_items([('critic_with_actor_tf', <tf.Tensor 'clip_by_value_3:0' shape=(?, 1) dtype=float32>), ('normalized_critic_with_actor_tf', <tf.Tensor 'critic_1/dense_3/BiasAdd:0' shape=(?, 1) dtype=float32>), ('obs0', <tf.Tensor 'obs0:0' shape=(?, 7) dtype=float32>), ('action_noise', None), ('stats_names', ['obs_rms_mean', 'obs_rms_std', 'reference_Q_mean', 'reference_Q_std', 'reference_actor_Q_mean', 'reference_actor_Q_std', 'reference_action_mean', 'reference_action_std', 'reference_perturbed_action_mean', 'reference_perturbed_action_std']), ('critic_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7fdd9346bb70>), ('action_range', (-1.0, 1.0)), ('actor_lr', 0.0001), ('actor_loss', <tf.Tensor 'Neg:0' shape=() dtype=float32>), ('actor_tf', <tf.Tensor 'actor/Sigmoid:0' shape=(?, 2) dtype=float32>), ('observation_range', (-5.0, 5.0)), ('normalize_observations', True), ('actor_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7fdd16e87c50>), ('enable_popart', False), ('normalized_critic_tf', <tf.Tensor 'critic/dense_3/BiasAdd:0' shape=(?, 1) dtype=float32>), ('critic_lr', 0.001), ('perturb_policy_ops', <tf.Operation 'group_deps' type=NoOp>), ('reward_scale', 1.0), ('gamma', 0.99), ('target_critic', <test.baselines.ddpg.models.Critic object at 0x7fdd171b0a58>), ('stats_ops', [<tf.Tensor 'Mean_3:0' shape=() dtype=float32>, <tf.Tensor 'Mean_4:0' shape=() dtype=float32>, <tf.Tensor 'Mean_5:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_1:0' shape=() dtype=float32>, <tf.Tensor 'Mean_8:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_2:0' shape=() dtype=float32>, <tf.Tensor 'Mean_11:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_3:0' shape=() dtype=float32>, <tf.Tensor 'Mean_14:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_4:0' shape=() dtype=float32>]), ('target_actor', <test.baselines.ddpg.models.Actor object at 0x7fdd171b01d0>), ('stats_sample', None), ('adaptive_policy_distance', <tf.Tensor 'Sqrt:0' shape=() dtype=float32>), ('target_soft_updates', [<tf.Operation 'group_deps_5' type=NoOp>, <tf.Operation 'group_deps_7' type=NoOp>]), ('target_Q', <tf.Tensor 'add:0' shape=(?, 1) dtype=float32>), ('perturb_adaptive_policy_ops', <tf.Operation 'group_deps_1' type=NoOp>), ('critic_grads', <tf.Tensor 'concat_2:0' shape=(5121,) dtype=float32>), ('critic_target', <tf.Tensor 'critic_target:0' shape=(?, 1) dtype=float32>), ('memory', <test.baselines.ddpg.memory.Memory object at 0x7fdd17401dd8>), ('obs_rms', <baselines.common.mpi_running_mean_std.RunningMeanStd object at 0x7fdd171b0ba8>), ('param_noise_stddev', <tf.Tensor 'param_noise_stddev:0' shape=() dtype=float32>), ('target_init_updates', [<tf.Operation 'group_deps_4' type=NoOp>, <tf.Operation 'group_deps_6' type=NoOp>]), ('ret_rms', None), ('critic', <test.baselines.ddpg.models.Critic object at 0x7fdd17401f98>), ('critic_loss', <tf.Tensor 'add_13:0' shape=() dtype=float32>), ('critic_l2_reg', 0.01), ('terminals1', <tf.Tensor 'terminals1:0' shape=(?, 1) dtype=float32>), ('actor', <test.baselines.ddpg.models.Actor object at 0x7fdd17401fd0>), ('critic_tf', <tf.Tensor 'clip_by_value_2:0' shape=(?, 1) dtype=float32>), ('perturbed_actor_tf', <tf.Tensor 'param_noise_actor/Sigmoid:0' shape=(?, 2) dtype=float32>), ('normalize_returns', False), ('rewards', <tf.Tensor 'rewards:0' shape=(?, 1) dtype=float32>), ('actions', <tf.Tensor 'actions:0' shape=(?, 2) dtype=float32>), ('return_range', (-inf, inf)), ('batch_size', 1), ('param_noise', AdaptiveParamNoiseSpec(initial_stddev=0.2, desired_action_stddev=0.2, adoption_coefficient=1.01)), ('obs1', <tf.Tensor 'obs1:0' shape=(?, 7) dtype=float32>), ('tau', 0.01), ('actor_grads', <tf.Tensor 'concat:0' shape=(5058,) dtype=float32>), ('clip_norm', None)])
+---------------------------------------
+| eval/Q                 | -16.172892 |
+| eval/episodes          | 1          |
+| eval/return            | -1.03e+03  |
+| eval/return_history    | -1.03e+03  |
+| rollout/Q_mean         | nan        |
+| rollout/actions_mean   | 0.14663146 |
+| rollout/actions_std    | 0.10618292 |
+| rollout/episode_steps  | nan        |
+| rollout/episodes       | 0          |
+| rollout/return         | nan        |
+| rollout/return_history | nan        |
+| total/duration         | 19.3       |
+| total/episodes         | 0          |
+| total/epochs           | 1          |
+| total/steps            | 0          |
+| total/steps_per_second | 0          |
+---------------------------------------
+

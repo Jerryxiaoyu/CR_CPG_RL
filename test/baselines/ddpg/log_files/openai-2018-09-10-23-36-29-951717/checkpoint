@@ -1,0 +1,6 @@
+model_checkpoint_path: "trained_variables9.ckpt"
+all_model_checkpoint_paths: "trained_variables5.ckpt"
+all_model_checkpoint_paths: "trained_variables6.ckpt"
+all_model_checkpoint_paths: "trained_variables7.ckpt"
+all_model_checkpoint_paths: "trained_variables8.ckpt"
+all_model_checkpoint_paths: "trained_variables9.ckpt"

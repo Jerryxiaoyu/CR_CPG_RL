@@ -1,0 +1,62 @@
+Logging to log_files/openai-2018-09-10-14-39-37-728977
+rank 0: seed=0, logdir=log_files/openai-2018-09-10-14-39-37-728977
+scaling actions by 1 before executing in env
+Using agent with the following configuration:
+dict_items([('ret_rms', None), ('actor_tf', <tf.Tensor 'actor/Sigmoid:0' shape=(?, 2) dtype=float32>), ('return_range', (-inf, inf)), ('batch_size', 1), ('stats_ops', [<tf.Tensor 'Mean_3:0' shape=() dtype=float32>, <tf.Tensor 'Mean_4:0' shape=() dtype=float32>, <tf.Tensor 'Mean_5:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_1:0' shape=() dtype=float32>, <tf.Tensor 'Mean_8:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_2:0' shape=() dtype=float32>, <tf.Tensor 'Mean_11:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_3:0' shape=() dtype=float32>, <tf.Tensor 'Mean_14:0' shape=() dtype=float32>, <tf.Tensor 'Sqrt_4:0' shape=() dtype=float32>]), ('actor_lr', 0.0001), ('normalized_critic_with_actor_tf', <tf.Tensor 'critic_1/dense_3/BiasAdd:0' shape=(?, 1) dtype=float32>), ('critic_target', <tf.Tensor 'critic_target:0' shape=(?, 1) dtype=float32>), ('stats_names', ['obs_rms_mean', 'obs_rms_std', 'reference_Q_mean', 'reference_Q_std', 'reference_actor_Q_mean', 'reference_actor_Q_std', 'reference_action_mean', 'reference_action_std', 'reference_perturbed_action_mean', 'reference_perturbed_action_std']), ('reward_scale', 1.0), ('critic_with_actor_tf', <tf.Tensor 'clip_by_value_3:0' shape=(?, 1) dtype=float32>), ('action_range', (-1.0, 1.0)), ('clip_norm', None), ('critic', <test.baselines.ddpg.models.Critic object at 0x7f7fba983f60>), ('rewards', <tf.Tensor 'rewards:0' shape=(?, 1) dtype=float32>), ('memory', <test.baselines.ddpg.memory.Memory object at 0x7f7fba983da0>), ('action_noise', None), ('perturb_adaptive_policy_ops', <tf.Operation 'group_deps_1' type=NoOp>), ('enable_popart', False), ('normalize_observations', True), ('actor_loss', <tf.Tensor 'Neg:0' shape=() dtype=float32>), ('obs1', <tf.Tensor 'obs1:0' shape=(?, 7) dtype=float32>), ('perturbed_actor_tf', <tf.Tensor 'param_noise_actor/Sigmoid:0' shape=(?, 2) dtype=float32>), ('normalized_critic_tf', <tf.Tensor 'critic/dense_3/BiasAdd:0' shape=(?, 1) dtype=float32>), ('param_noise_stddev', <tf.Tensor 'param_noise_stddev:0' shape=() dtype=float32>), ('actor', <test.baselines.ddpg.models.Actor object at 0x7f7fba983f98>), ('critic_loss', <tf.Tensor 'add_13:0' shape=() dtype=float32>), ('critic_grads', <tf.Tensor 'concat_2:0' shape=(5121,) dtype=float32>), ('observation_range', (-5.0, 5.0)), ('stats_sample', None), ('obs0', <tf.Tensor 'obs0:0' shape=(?, 7) dtype=float32>), ('actor_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7f7fba406ef0>), ('actor_grads', <tf.Tensor 'concat:0' shape=(5058,) dtype=float32>), ('critic_l2_reg', 0.01), ('critic_optimizer', <baselines.common.mpi_adam.MpiAdam object at 0x7f80369e5b70>), ('normalize_returns', False), ('terminals1', <tf.Tensor 'terminals1:0' shape=(?, 1) dtype=float32>), ('target_Q', <tf.Tensor 'add:0' shape=(?, 1) dtype=float32>), ('critic_lr', 0.001), ('target_actor', <test.baselines.ddpg.models.Actor object at 0x7f7fba730828>), ('param_noise', AdaptiveParamNoiseSpec(initial_stddev=0.2, desired_action_stddev=0.2, adoption_coefficient=1.01)), ('target_init_updates', [<tf.Operation 'group_deps_4' type=NoOp>, <tf.Operation 'group_deps_6' type=NoOp>]), ('target_critic', <test.baselines.ddpg.models.Critic object at 0x7f7fba730208>), ('actions', <tf.Tensor 'actions:0' shape=(?, 2) dtype=float32>), ('tau', 0.01), ('perturb_policy_ops', <tf.Operation 'group_deps' type=NoOp>), ('target_soft_updates', [<tf.Operation 'group_deps_5' type=NoOp>, <tf.Operation 'group_deps_7' type=NoOp>]), ('adaptive_policy_distance', <tf.Tensor 'Sqrt:0' shape=() dtype=float32>), ('gamma', 0.99), ('critic_tf', <tf.Tensor 'clip_by_value_2:0' shape=(?, 1) dtype=float32>), ('obs_rms', <baselines.common.mpi_running_mean_std.RunningMeanStd object at 0x7f7fba730b70>)])
+---------------------------------------
+| eval/Q                 | 7.78802    |
+| eval/episodes          | 1          |
+| eval/return            | 604        |
+| eval/return_history    | 604        |
+| rollout/Q_mean         | nan        |
+| rollout/actions_mean   | 0.14937434 |
+| rollout/actions_std    | 0.15803558 |
+| rollout/episode_steps  | nan        |
+| rollout/episodes       | 0          |
+| rollout/return         | nan        |
+| rollout/return_history | nan        |
+| total/duration         | 20.7       |
+| total/episodes         | 0          |
+| total/epochs           | 1          |
+| total/steps            | 0          |
+| total/steps_per_second | 0          |
+---------------------------------------
+
+---------------------------------------
+| eval/Q                 | 7.78802    |
+| eval/episodes          | 1          |
+| eval/return            | 604        |
+| eval/return_history    | 604        |
+| rollout/Q_mean         | nan        |
+| rollout/actions_mean   | 0.14937434 |
+| rollout/actions_std    | 0.15803558 |
+| rollout/episode_steps  | nan        |
+| rollout/episodes       | 0          |
+| rollout/return         | nan        |
+| rollout/return_history | nan        |
+| total/duration         | 39.9       |
+| total/episodes         | 0          |
+| total/epochs           | 2          |
+| total/steps            | 0          |
+| total/steps_per_second | 0          |
+---------------------------------------
+
+---------------------------------------
+| eval/Q                 | 7.78802    |
+| eval/episodes          | 1          |
+| eval/return            | 604        |
+| eval/return_history    | 604        |
+| rollout/Q_mean         | nan        |
+| rollout/actions_mean   | 0.14937434 |
+| rollout/actions_std    | 0.15803559 |
+| rollout/episode_steps  | nan        |
+| rollout/episodes       | 0          |
+| rollout/return         | nan        |
+| rollout/return_history | nan        |
+| total/duration         | 60.9       |
+| total/episodes         | 0          |
+| total/epochs           | 3          |
+| total/steps            | 0          |
+| total/steps_per_second | 0          |
+---------------------------------------
+

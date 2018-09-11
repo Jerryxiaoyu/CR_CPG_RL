@@ -1,0 +1,2 @@
+total/duration,total/episodes,rollout/actions_std,rollout/Q_mean,rollout/return_history,eval/episodes,rollout/return,total/steps_per_second,eval/return,total/epochs,eval/Q,total/steps,eval/return_history,rollout/actions_mean,rollout/episode_steps,rollout/episodes
+21.603217124938965,0,0.048286203,nan,nan,1,nan,0.0,-427.3311878972014,1,-19.409048,0,-427.3311878972014,0.024922611,nan,0

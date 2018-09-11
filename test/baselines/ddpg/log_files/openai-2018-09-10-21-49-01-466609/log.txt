@@ -1,0 +1,2 @@
+Logging to log_files/openai-2018-09-10-21-49-01-466609
+rank 0: seed=0, logdir=log_files/openai-2018-09-10-21-49-01-466609

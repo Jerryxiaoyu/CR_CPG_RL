@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/drl/PycharmProjects/RL_hub/test/baselines/ppo1/log-files/trained_variables.ckpt"
+all_model_checkpoint_paths: "/home/drl/PycharmProjects/RL_hub/test/baselines/ppo1/log-files/trained_variables.ckpt"

@@ -1,0 +1,91 @@
+Logging to /home/drl/PycharmProjects/DeployedProjects/CR_CPG_RL/test/baselines/ppo2/log-files/ppo-2018-09-10-16-05-32-946661
+-------------------------------------
+| approxkl           | 0.0074286894 |
+| clipfrac           | 0.08461914   |
+| eplenmean          | 1e+03        |
+| eprewmean          | -1.14e+03    |
+| explained_variance | -0.0292      |
+| fps                | 34           |
+| nupdates           | 1            |
+| policy_entropy     | 2.8852952    |
+| policy_loss        | 0.0042075245 |
+| serial_timesteps   | 2048         |
+| time_elapsed       | 59.5         |
+| total_timesteps    | 2048         |
+| value_loss         | 0.20166568   |
+-------------------------------------
+-------------------------------------
+| approxkl           | 0.0063754385 |
+| clipfrac           | 0.07841797   |
+| eplenmean          | 1e+03        |
+| eprewmean          | -1.37e+03    |
+| explained_variance | 0.697        |
+| fps                | 32           |
+| nupdates           | 2            |
+| policy_entropy     | 2.8799937    |
+| policy_loss        | 0.0025257994 |
+| serial_timesteps   | 4096         |
+| time_elapsed       | 122          |
+| total_timesteps    | 4096         |
+| value_loss         | 0.019388134  |
+-------------------------------------
+--------------------------------------
+| approxkl           | 0.007051233   |
+| clipfrac           | 0.08325195    |
+| eplenmean          | 1e+03         |
+| eprewmean          | -1.42e+03     |
+| explained_variance | 0.93          |
+| fps                | 33            |
+| nupdates           | 3             |
+| policy_entropy     | 2.9076576     |
+| policy_loss        | 0.00013053857 |
+| serial_timesteps   | 6144          |
+| time_elapsed       | 184           |
+| total_timesteps    | 6144          |
+| value_loss         | 0.004937828   |
+--------------------------------------
+-------------------------------------
+| approxkl           | 0.008823916  |
+| clipfrac           | 0.109375     |
+| eplenmean          | 1e+03        |
+| eprewmean          | -1.48e+03    |
+| explained_variance | 0.739        |
+| fps                | 34           |
+| nupdates           | 4            |
+| policy_entropy     | 2.9165378    |
+| policy_loss        | 0.0035365403 |
+| serial_timesteps   | 8192         |
+| time_elapsed       | 244          |
+| total_timesteps    | 8192         |
+| value_loss         | 0.019183002  |
+-------------------------------------
+-------------------------------------
+| approxkl           | 0.008584249  |
+| clipfrac           | 0.10297851   |
+| eplenmean          | 1e+03        |
+| eprewmean          | -1.46e+03    |
+| explained_variance | 0.741        |
+| fps                | 33           |
+| nupdates           | 5            |
+| policy_entropy     | 2.977935     |
+| policy_loss        | 0.0034166377 |
+| serial_timesteps   | 10240        |
+| time_elapsed       | 304          |
+| total_timesteps    | 10240        |
+| value_loss         | 0.014786872  |
+-------------------------------------
+-------------------------------------
+| approxkl           | 0.007922394  |
+| clipfrac           | 0.10063477   |
+| eplenmean          | 1e+03        |
+| eprewmean          | -1.46e+03    |
+| explained_variance | 0.876        |
+| fps                | 37           |
+| nupdates           | 6            |
+| policy_entropy     | 3.0014606    |
+| policy_loss        | 0.0018232756 |
+| serial_timesteps   | 12288        |
+| time_elapsed       | 360          |
+| total_timesteps    | 12288        |
+| value_loss         | 0.006950597  |
+-------------------------------------
