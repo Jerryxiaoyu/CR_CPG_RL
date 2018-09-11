@@ -1,5 +1,5 @@
 from test.baselines.common.mpi_running_mean_std import RunningMeanStd
-import baselines.common.tf_util as U
+import test.baselines.common.tf_util as U
 import tensorflow as tf
 import gym
 from test.baselines.common.distributions import make_pdtype

@@ -1,6 +1,6 @@
 from test.baselines import logger
 import numpy as np
-import baselines.common as common
+import test.baselines.common as common
 from test.baselines.common import tf_util as U
 import tensorflow as tf
 from test.baselines.acktr import kfac

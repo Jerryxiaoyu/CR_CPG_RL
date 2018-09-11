@@ -4,7 +4,7 @@ import pickle
 
 from test.baselines import logger
 from test.baselines.common import set_global_seeds
-import baselines.her.experiment.config as config
+import test.baselines.her.experiment.config as config
 from test.baselines.her.rollout import RolloutWorker
 
 

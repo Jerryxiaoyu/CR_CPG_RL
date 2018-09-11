@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 import tensorflow.contrib.layers as layers
 
-import baselines.common.tf_util as U
+import test.baselines.common.tf_util as U
 
 from test.baselines import logger
 from test.baselines import deepq

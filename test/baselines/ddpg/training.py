@@ -4,7 +4,7 @@ from collections import deque
 import pickle
 
 from test.baselines.ddpg.ddpg import DDPG
-import baselines.common.tf_util as U
+import test.baselines.common.tf_util as U
 
 from test.baselines import logger
 import numpy as np

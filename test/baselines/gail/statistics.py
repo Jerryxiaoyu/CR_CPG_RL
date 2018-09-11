@@ -5,7 +5,7 @@ This code is highly based on https://github.com/carpedm20/deep-rl-tensorflow/blo
 import tensorflow as tf
 import numpy as np
 
-import baselines.common.tf_util as U
+import test.baselines.common.tf_util as U
 
 
 class stats():

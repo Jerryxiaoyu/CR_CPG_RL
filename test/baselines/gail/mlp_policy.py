@@ -6,7 +6,7 @@ from test.baselines/ppo1/mlp_policy.py and add simple modification
 import tensorflow as tf
 import gym
 
-import baselines.common.tf_util as U
+import test.baselines.common.tf_util as U
 from test.baselines.common.mpi_running_mean_std import RunningMeanStd
 from test.baselines.common.distributions import make_pdtype
 from test.baselines.acktr.utils import dense

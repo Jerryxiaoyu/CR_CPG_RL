@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-import baselines.common.tf_util as U
+import test.baselines.common.tf_util as U
 from test.baselines.a2c.utils import fc
 from tensorflow.python.ops import math_ops
 

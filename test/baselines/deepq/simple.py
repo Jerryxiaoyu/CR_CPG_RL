@@ -7,7 +7,7 @@ import cloudpickle
 import numpy as np
 
 import gym
-import baselines.common.tf_util as U
+import test.baselines.common.tf_util as U
 from test.baselines import logger
 from test.baselines.common.schedules import LinearSchedule
 from test.baselines import deepq

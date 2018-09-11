@@ -9,7 +9,7 @@ from mpi4py import MPI
 from test.baselines import logger
 from test.baselines.common import set_global_seeds
 from test.baselines.common.mpi_moments import mpi_moments
-import baselines.her.experiment.config as config
+import test.baselines.her.experiment.config as config
 from test.baselines.her.rollout import RolloutWorker
 from test.baselines.her.util import mpi_fork
 
@@ -89,7 +89,7 @@ def launch(
         whoami = mpi_fork(num_cpu)
         if whoami == 'parent':
             sys.exit(0)
-        import baselines.common.tf_util as U
+        import test.baselines.common.tf_util as U
         U.single_threaded_session().__enter__()
     rank = MPI.COMM_WORLD.Get_rank()
 
