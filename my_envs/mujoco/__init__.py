@@ -33,6 +33,9 @@ from my_envs.mujoco.cellrobot_snake import CellRobotSnakeEnv
 from my_envs.mujoco.cellrobot_butterfly import CellRobotButterflyEnv
 from my_envs.mujoco.cellrobot_rl import CellRobotRLEnv
 from my_envs.mujoco.cellrobot_rl_hr import CellRobotRLHrEnv
+from my_envs.mujoco.cellrobot_Bigdog2_rl import CellRobotRLBigDog2Env
+
+
 
 register(
     id='HalfCheetahEnvDisableEnv-v0',
@@ -147,6 +150,13 @@ register(
 register(
     id='CellRobotRLHrEnv-v0',
     entry_point='my_envs.mujoco:CellRobotRLHrEnv ',
+    max_episode_steps=1000,
+    reward_threshold=6000.0,
+)
+
+register(
+    id='CellRobotRLBigdog2Env-v0',
+    entry_point='my_envs.mujoco:CellRobotRLBigDog2Env ',
     max_episode_steps=1000,
     reward_threshold=6000.0,
 )

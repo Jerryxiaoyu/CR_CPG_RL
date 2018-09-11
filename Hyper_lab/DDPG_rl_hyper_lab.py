@@ -7,7 +7,7 @@ class VG(VariantGenerator):
     
     @variant
     def env_name(self):
-        return [ 'CellRobotRLEnv-v0'   ]  # 'Cellrobot2Env-v0','CellrobotSnakeEnv-v0' , 'CellrobotSnake2Env-v0','CellrobotButterflyEnv-v0'
+        return [ 'CellRobotRLHrEnv-v0'   ]  # CellRobotRLHrEnv-v0  'CellRobotRLEnv-v0'
     @variant
     def batch_size(self):
         return [ 512 ]
