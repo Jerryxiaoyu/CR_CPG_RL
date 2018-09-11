@@ -89,7 +89,7 @@ def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('--env-id', type=str, default='CellRobotRLEnv-v0') #CellRobotRLEnv-v0   HalfCheetah-v2 CellRobotRLEnv CellRobotRLBigdog2Env-v0
-    boolean_flag(parser, 'render-eval', default=True)
+    boolean_flag(parser, 'render-eval', default=False)
     boolean_flag(parser, 'layer-norm', default=True)
     boolean_flag(parser, 'render', default=False)
     boolean_flag(parser, 'normalize-returns', default=False)
@@ -111,7 +111,7 @@ def parse_args():
     parser.add_argument('--noise-type', type=str, default='adaptive-param_0.2')  # choices are adaptive-param_xx, ou_xx, normal_xx, none
     parser.add_argument('--num-timesteps', type=int, default=None)
     parser.add_argument('--action-dim', type=int, default=2)
-    boolean_flag(parser, 'evaluation', default=False)
+    boolean_flag(parser, 'evaluation', default=True)
     args = parser.parse_args()
     print(args)
     
