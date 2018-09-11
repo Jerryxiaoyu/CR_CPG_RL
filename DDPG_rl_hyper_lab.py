@@ -102,7 +102,7 @@ for v in variants:
     action_dim = v['action_dim']
     noise_type= v['noise_type']
 
-    os.system("mpiexec -n 16"
+    os.system("nohup mpiexec -n 5"
               "  python3  ddpg_main.py " +
               " --seed " + str(seed) +
               " --env-id " + str(env_name) +
@@ -113,7 +113,9 @@ for v in variants:
               " --nb-epoch-cycles " + str(nb_epoch_cycles) +
               " --nb-train-steps " + str(nb_train_steps)+
               " --action-dim " + str(action_dim)+
-              " --noise-type " + str(noise_type)
- 
+              " --noise-type " + str(noise_type)+
+              " --group_dir " + str(group_dir)
+                +
+              " >log_files/ddpg.log </dev/null 2>&1 &"
               )
      

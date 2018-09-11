@@ -111,6 +111,7 @@ def parse_args():
     parser.add_argument('--noise-type', type=str, default='adaptive-param_0.2')  # choices are adaptive-param_xx, ou_xx, normal_xx, none
     parser.add_argument('--num-timesteps', type=int, default=None)
     parser.add_argument('--action-dim', type=int, default=2)
+    parser.add_argument('--group-dir', type=str, default=None)
     boolean_flag(parser, 'evaluation', default=False)
     args = parser.parse_args()
     print(args)
@@ -131,8 +132,12 @@ import datetime
 if __name__ == '__main__':
     args = parse_args()
     if MPI.COMM_WORLD.Get_rank() == 0:
-        dir = osp.join('log_files',
-                       datetime.datetime.now().strftime("openai-%Y-%m-%d-%H-%M"))
+        if args['group_dir'] is not None:
+            dir = osp.join(args['group_dir'], args['env_id'],
+                           datetime.datetime.now().strftime("openai-%Y-%m-%d-%H-%M-%S-%f"))
+        else:
+            dir = osp.join('log_files',args['env_id'],
+                           datetime.datetime.now().strftime("openai-%Y-%m-%d-%H-%M-%S-%f"))
         
         logger.configure(dir)
 
