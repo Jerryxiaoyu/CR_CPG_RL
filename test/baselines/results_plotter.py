@@ -5,7 +5,7 @@ matplotlib.use('TkAgg') # Can change to 'Agg' for non-interactive mode
 import matplotlib.pyplot as plt
 plt.rcParams['svg.fonttype'] = 'none'
 
-from baselines.bench.monitor import load_results
+from test.baselines.bench.monitor import load_results
 
 X_TIMESTEPS = 'timesteps'
 X_EPISODES = 'episodes'
@@ -65,7 +65,7 @@ def plot_results(dirs, num_timesteps, xaxis, task_name):
     plot_curves(xy_list, xaxis, task_name)
 
 # Example usage in jupyter-notebook
-# from baselines import log_viewer
+# from test.baselines import log_viewer
 # %matplotlib inline
 # log_viewer.plot_results(["./log"], 10e6, log_viewer.X_TIMESTEPS, "Breakout")
 # Here ./log is a directory containing the monitor.csv files

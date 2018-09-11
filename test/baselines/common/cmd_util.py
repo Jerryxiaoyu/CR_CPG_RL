@@ -5,11 +5,11 @@ Helpers for scripts like run_atari.py.
 import os
 import gym
 from gym.wrappers import FlattenDictWrapper
-from baselines import logger
-from baselines.bench import Monitor
-from baselines.common import set_global_seeds
-from baselines.common.atari_wrappers import make_atari, wrap_deepmind
-from baselines.common.vec_env.subproc_vec_env import SubprocVecEnv
+from test.baselines import logger
+from test.baselines.bench import Monitor
+from test.baselines.common import set_global_seeds
+from test.baselines.common.atari_wrappers import make_atari, wrap_deepmind
+from test.baselines.common.vec_env.subproc_vec_env import SubprocVecEnv
 from my_envs.mujoco import *
 def make_atari_env(env_id, num_env, seed, wrapper_kwargs=None, start_index=0):
     """

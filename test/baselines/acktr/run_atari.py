@@ -2,11 +2,11 @@
 
 from functools import partial
 
-from baselines import logger
-from baselines.acktr.acktr_disc import learn
-from baselines.common.cmd_util import make_atari_env, atari_arg_parser
-from baselines.common.vec_env.vec_frame_stack import VecFrameStack
-from baselines.ppo2.policies import CnnPolicy
+from test.baselines import logger
+from test.baselines.acktr.acktr_disc import learn
+from test.baselines.common.cmd_util import make_atari_env, atari_arg_parser
+from test.baselines.common.vec_env.vec_frame_stack import VecFrameStack
+from test.baselines.ppo2.policies import CnnPolicy
 
 def train(env_id, num_timesteps, seed, num_cpu):
     env = VecFrameStack(make_atari_env(env_id, num_cpu, seed), 4)

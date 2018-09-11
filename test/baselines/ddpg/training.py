@@ -3,7 +3,7 @@ import time
 from collections import deque
 import pickle
 
-from baselines.ddpg.ddpg import DDPG
+from test.baselines.ddpg.ddpg import DDPG
 import baselines.common.tf_util as U
 
 from test.baselines import logger

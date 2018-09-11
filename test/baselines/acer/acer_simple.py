@@ -2,17 +2,17 @@ import time
 import joblib
 import numpy as np
 import tensorflow as tf
-from baselines import logger
+from test.baselines import logger
 
-from baselines.common import set_global_seeds
-from baselines.common.runners import AbstractEnvRunner
+from test.baselines.common import set_global_seeds
+from test.baselines.common.runners import AbstractEnvRunner
 
-from baselines.a2c.utils import batch_to_seq, seq_to_batch
-from baselines.a2c.utils import Scheduler, make_path, find_trainable_variables
-from baselines.a2c.utils import cat_entropy_softmax
-from baselines.a2c.utils import EpisodeStats
-from baselines.a2c.utils import get_by_index, check_shape, avg_norm, gradient_add, q_explained_variance
-from baselines.acer.buffer import Buffer
+from test.baselines.a2c.utils import batch_to_seq, seq_to_batch
+from test.baselines.a2c.utils import Scheduler, make_path, find_trainable_variables
+from test.baselines.a2c.utils import cat_entropy_softmax
+from test.baselines.a2c.utils import EpisodeStats
+from test.baselines.a2c.utils import get_by_index, check_shape, avg_norm, gradient_add, q_explained_variance
+from test.baselines.acer.buffer import Buffer
 
 import os.path as osp
 

@@ -1,6 +1,6 @@
 import gym
 
-from baselines import deepq
+from test.baselines import deepq
 
 
 def main():

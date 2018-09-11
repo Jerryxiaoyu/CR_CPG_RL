@@ -6,11 +6,11 @@ import tensorflow.contrib.layers as layers
 
 import baselines.common.tf_util as U
 
-from baselines import logger
-from baselines import deepq
-from baselines.deepq.replay_buffer import ReplayBuffer
-from baselines.deepq.utils import BatchInput
-from baselines.common.schedules import LinearSchedule
+from test.baselines import logger
+from test.baselines import deepq
+from test.baselines.deepq.replay_buffer import ReplayBuffer
+from test.baselines.deepq.utils import BatchInput
+from test.baselines.common.schedules import LinearSchedule
 
 
 def model(inpt, num_actions, scope, reuse=False):

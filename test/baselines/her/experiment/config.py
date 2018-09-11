@@ -4,9 +4,9 @@ import json
 import os
 import gym
 
-from baselines import logger
-from baselines.her.ddpg import DDPG
-from baselines.her.her import make_sample_her_transitions
+from test.baselines import logger
+from test.baselines.her.ddpg import DDPG
+from test.baselines.her.her import make_sample_her_transitions
 
 
 DEFAULT_ENV_PARAMS = {

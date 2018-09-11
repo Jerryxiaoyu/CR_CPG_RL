@@ -5,8 +5,8 @@ I follow the architecture from the official repository
 import tensorflow as tf
 import numpy as np
 
-from baselines.common.mpi_running_mean_std import RunningMeanStd
-from baselines.common import tf_util as U
+from test.baselines.common.mpi_running_mean_std import RunningMeanStd
+from test.baselines.common import tf_util as U
 
 def logsigmoid(a):
     '''Equivalent to tf.log(tf.sigmoid(a))'''

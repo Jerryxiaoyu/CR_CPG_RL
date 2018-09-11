@@ -35,7 +35,7 @@ def test_runningmeanstd():
     import subprocess
     subprocess.check_call(['mpirun', '-np', '3', 
         'python','-c', 
-        'from baselines.common.mpi_moments import _helper_runningmeanstd; _helper_runningmeanstd()'])
+        'from test.baselines.common.mpi_moments import _helper_runningmeanstd; _helper_runningmeanstd()'])
 
 def _helper_runningmeanstd():
     comm = MPI.COMM_WORLD

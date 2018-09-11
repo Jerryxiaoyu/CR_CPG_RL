@@ -4,12 +4,12 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.contrib.staging import StagingArea
 
-from baselines import logger
-from baselines.her.util import (
+from test.baselines import logger
+from test.baselines.her.util import (
     import_function, store_args, flatten_grads, transitions_in_episode_batch)
-from baselines.her.normalizer import Normalizer
-from baselines.her.replay_buffer import ReplayBuffer
-from baselines.common.mpi_adam import MpiAdam
+from test.baselines.her.normalizer import Normalizer
+from test.baselines.her.replay_buffer import ReplayBuffer
+from test.baselines.common.mpi_adam import MpiAdam
 
 
 def dims_to_shapes(input_dims):

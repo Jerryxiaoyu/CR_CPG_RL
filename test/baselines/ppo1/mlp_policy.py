@@ -1,8 +1,8 @@
-from baselines.common.mpi_running_mean_std import RunningMeanStd
+from test.baselines.common.mpi_running_mean_std import RunningMeanStd
 import baselines.common.tf_util as U
 import tensorflow as tf
 import gym
-from baselines.common.distributions import make_pdtype
+from test.baselines.common.distributions import make_pdtype
 
 class MlpPolicy(object):
     recurrent = False

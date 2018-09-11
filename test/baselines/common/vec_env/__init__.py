@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from baselines import logger
+from test.baselines import logger
 
 class AlreadySteppingError(Exception):
     """

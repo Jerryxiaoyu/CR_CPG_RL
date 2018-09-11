@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
-from baselines.ppo2.policies import nature_cnn
-from baselines.a2c.utils import fc, batch_to_seq, seq_to_batch, lstm, sample
+from test.baselines.ppo2.policies import nature_cnn
+from test.baselines.a2c.utils import fc, batch_to_seq, seq_to_batch, lstm, sample
 
 
 class AcerCnnPolicy(object):

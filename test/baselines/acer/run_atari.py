@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-from baselines import logger
-from baselines.acer.acer_simple import learn
-from baselines.acer.policies import AcerCnnPolicy, AcerLstmPolicy
-from baselines.common.cmd_util import make_atari_env, atari_arg_parser
+from test.baselines import logger
+from test.baselines.acer.acer_simple import learn
+from test.baselines.acer.policies import AcerCnnPolicy, AcerLstmPolicy
+from test.baselines.common.cmd_util import make_atari_env, atari_arg_parser
 
 def train(env_id, num_timesteps, seed, policy, lrschedule, num_cpu):
     env = make_atari_env(env_id, num_cpu, seed)

@@ -5,7 +5,7 @@ the values of each item is a list storing the expert trajectory sequentially
 a transition can be: (data['obs'][t], data['acs'][t], data['obs'][t+1]) and get reward data['rews'][t]
 '''
 
-from baselines import logger
+from test.baselines import logger
 import numpy as np
 
 

@@ -3,15 +3,15 @@ import time
 import joblib
 import numpy as np
 import tensorflow as tf
-from baselines import logger
+from test.baselines import logger
 
-from baselines.common import set_global_seeds, explained_variance
-from baselines.common.runners import AbstractEnvRunner
-from baselines.common import tf_util
+from test.baselines.common import set_global_seeds, explained_variance
+from test.baselines.common.runners import AbstractEnvRunner
+from test.baselines.common import tf_util
 
-from baselines.a2c.utils import discount_with_dones
-from baselines.a2c.utils import Scheduler, make_path, find_trainable_variables
-from baselines.a2c.utils import cat_entropy, mse
+from test.baselines.a2c.utils import discount_with_dones
+from test.baselines.a2c.utils import Scheduler, make_path, find_trainable_variables
+from test.baselines.a2c.utils import cat_entropy, mse
 
 class Model(object):
 

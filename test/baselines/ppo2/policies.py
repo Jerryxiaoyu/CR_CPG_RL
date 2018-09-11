@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from baselines.a2c.utils import conv, fc, conv_to_fc, batch_to_seq, seq_to_batch, lstm, lnlstm
+from test.baselines.a2c.utils import conv, fc, conv_to_fc, batch_to_seq, seq_to_batch, lstm, lnlstm
 from test.baselines.common.distributions import make_pdtype
 
 def nature_cnn(unscaled_images, **conv_kwargs):

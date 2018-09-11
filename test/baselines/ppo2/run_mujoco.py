@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from test.baselines.common.cmd_util import mujoco_arg_parser
-from baselines import bench, logger
+from test.baselines import bench, logger
 
 from my_envs.mujoco import *
 
@@ -13,14 +13,14 @@ dir = os.path.join(os.getcwd(),'log-files',
                    datetime.datetime.now().strftime("ppo-%Y-%m-%d-%H-%M-%S-%f"))
 
 def train(env_id, num_timesteps, seed):
-    from baselines.common import set_global_seeds
+    from test.baselines.common import set_global_seeds
     from test.baselines.common.vec_env.vec_normalize import VecNormalize
     from test.baselines.ppo2 import ppo2
     from test.baselines.ppo2.policies import MlpPolicy
     import gym
     import tensorflow as tf
     
-    from baselines.common.vec_env.dummy_vec_env import DummyVecEnv
+    from test.baselines.common.vec_env.dummy_vec_env import DummyVecEnv
     ncpu = 8
     config = tf.ConfigProto(allow_soft_placement=True,
                             intra_op_parallelism_threads=ncpu,

@@ -7,11 +7,11 @@ import json
 from mpi4py import MPI
 
 from test.baselines import logger
-from baselines.common import set_global_seeds
-from baselines.common.mpi_moments import mpi_moments
+from test.baselines.common import set_global_seeds
+from test.baselines.common.mpi_moments import mpi_moments
 import baselines.her.experiment.config as config
-from baselines.her.rollout import RolloutWorker
-from baselines.her.util import mpi_fork
+from test.baselines.her.rollout import RolloutWorker
+from test.baselines.her.util import mpi_fork
 
 
 def mpi_average(value):

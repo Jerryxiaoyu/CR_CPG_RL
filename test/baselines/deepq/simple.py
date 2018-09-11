@@ -8,11 +8,11 @@ import numpy as np
 
 import gym
 import baselines.common.tf_util as U
-from baselines import logger
-from baselines.common.schedules import LinearSchedule
-from baselines import deepq
-from baselines.deepq.replay_buffer import ReplayBuffer, PrioritizedReplayBuffer
-from baselines.deepq.utils import BatchInput, load_state, save_state
+from test.baselines import logger
+from test.baselines.common.schedules import LinearSchedule
+from test.baselines import deepq
+from test.baselines.deepq.replay_buffer import ReplayBuffer, PrioritizedReplayBuffer
+from test.baselines.deepq.utils import BatchInput, load_state, save_state
 
 
 class ActWrapper(object):

@@ -1,10 +1,10 @@
-from baselines import logger
+from test.baselines import logger
 import numpy as np
 import baselines.common as common
-from baselines.common import tf_util as U
+from test.baselines.common import tf_util as U
 import tensorflow as tf
-from baselines.acktr import kfac
-from baselines.acktr.utils import dense
+from test.baselines.acktr import kfac
+from test.baselines.acktr.utils import dense
 
 class NeuralNetValueFunction(object):
     def __init__(self, ob_dim, ac_dim): #pylint: disable=W0613

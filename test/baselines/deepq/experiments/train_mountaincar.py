@@ -1,6 +1,6 @@
 import gym
 
-from baselines import deepq
+from test.baselines import deepq
 
 from my_envs.mujoco import *
 

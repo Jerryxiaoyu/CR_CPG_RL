@@ -4,10 +4,10 @@ import joblib
 import numpy as np
 import os.path as osp
 import tensorflow as tf
-from baselines import logger
+from test.baselines import logger
 from collections import deque
-from baselines.common import explained_variance
-from baselines.common.runners import AbstractEnvRunner
+from test.baselines.common import explained_variance
+from test.baselines.common.runners import AbstractEnvRunner
 from gym import error, spaces
 
 T_GAP =100

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
 from mpi4py import MPI
-from baselines.common import set_global_seeds
-from baselines import bench
+from test.baselines.common import set_global_seeds
+from test.baselines import bench
 import os.path as osp
-from baselines import logger
-from baselines.common.atari_wrappers import make_atari, wrap_deepmind
-from baselines.common.cmd_util import atari_arg_parser
+from test.baselines import logger
+from test.baselines.common.atari_wrappers import make_atari, wrap_deepmind
+from test.baselines.common.cmd_util import atari_arg_parser
 
 def train(env_id, num_timesteps, seed):
-    from baselines.ppo1 import pposgd_simple, cnn_policy
+    from test.baselines.ppo1 import pposgd_simple, cnn_policy
     import baselines.common.tf_util as U
     rank = MPI.COMM_WORLD.Get_rank()
     sess = U.single_threaded_session()
