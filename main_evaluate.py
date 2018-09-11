@@ -8,7 +8,6 @@ from test.baselines.common.misc_util import (
     boolean_flag,
 )
 import test.baselines.ddpg.training as training
-#import test.baselines.ddpg.training_hr as training
 from test.baselines.ddpg.models import Actor, Critic
 from test.baselines.ddpg.memory import Memory
 from test.baselines.ddpg.noise import *
@@ -17,7 +16,7 @@ import gym
 import tensorflow as tf
 from mpi4py import MPI
 
-def run(env_id, seed, noise_type, layer_norm, evaluation,action_dim=2, **kwargs):
+def run(env_id, seed, noise_type, layer_norm, evaluation, **kwargs):
     # Configure things.
     rank = MPI.COMM_WORLD.Get_rank()
     if rank != 0:
@@ -30,9 +29,6 @@ def run(env_id, seed, noise_type, layer_norm, evaluation,action_dim=2, **kwargs)
     if evaluation and rank==0:
         eval_env = gym.make(env_id)
         eval_env = bench.Monitor(eval_env, os.path.join(logger.get_dir(), 'gym_eval'))
-        #os.mkdir(os.path.join(logger.get_dir(), 'model'))
-        #eval_env = gym.wrappers.Monitor(eval_env, os.path.join(logger.get_dir(), 'model'), force=True )
-        
         env = bench.Monitor(env, None)
     else:
         eval_env = None
@@ -40,7 +36,7 @@ def run(env_id, seed, noise_type, layer_norm, evaluation,action_dim=2, **kwargs)
     # Parse noise_type
     action_noise = None
     param_noise = None
-    nb_actions = action_dim   #env.action_space.shape[-1]
+    nb_actions = 2   #env.action_space.shape[-1]
     for current_noise_type in noise_type.split(','):
         current_noise_type = current_noise_type.strip()
         if current_noise_type == 'none':
@@ -74,8 +70,8 @@ def run(env_id, seed, noise_type, layer_norm, evaluation,action_dim=2, **kwargs)
     # Disable logging for rank != 0 to avoid noise.
     if rank == 0:
         start_time = time.time()
-    training.train(env=env, eval_env=eval_env, param_noise=param_noise,
-        action_noise=action_noise, actor=actor, critic=critic, memory=memory,action_dim=nb_actions, **kwargs)
+    training.test(env=env, eval_env=eval_env, param_noise=param_noise,
+        action_noise=action_noise, actor=actor, critic=critic, memory=memory,  **kwargs)
     env.close()
     if eval_env is not None:
         eval_env.close()
@@ -88,7 +84,7 @@ from my_envs.mujoco import *
 def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('--env-id', type=str, default='CellRobotRLEnv-v0') #CellRobotRLEnv-v0   HalfCheetah-v2 CellRobotRLEnv CellRobotRLBigdog2Env-v0
+    parser.add_argument('--env-id', type=str, default='CellRobotRLHrEnv-v0') #CellRobotRLEnv-v0   HalfCheetah-v2
     boolean_flag(parser, 'render-eval', default=True)
     boolean_flag(parser, 'layer-norm', default=True)
     boolean_flag(parser, 'render', default=False)
@@ -96,24 +92,24 @@ def parse_args():
     boolean_flag(parser, 'normalize-observations', default=True)
     parser.add_argument('--seed', help='RNG seed', type=int, default=0)
     parser.add_argument('--critic-l2-reg', type=float, default=1e-3)
-    parser.add_argument('--batch-size', type=int, default=64)  # per MPI worker
-    parser.add_argument('--actor-lr', type=float, default=1e-3)
+    parser.add_argument('--batch-size', type=int, default=512)  # per MPI worker
+    parser.add_argument('--actor-lr', type=float, default=1e-4)
     parser.add_argument('--critic-lr', type=float, default=1e-3)
     boolean_flag(parser, 'popart', default=False)
     parser.add_argument('--gamma', type=float, default=0.99)
     parser.add_argument('--reward-scale', type=float, default=1.)
     parser.add_argument('--clip-norm', type=float, default=None)
-    parser.add_argument('--nb-epochs', type=int, default=100)  # with default settings, perform 1M steps total
-    parser.add_argument('--nb-epoch-cycles', type=int, default=50)#20
+    parser.add_argument('--nb-epochs', type=int, default=5)  # with default settings, perform 1M steps total
+    parser.add_argument('--nb-epoch-cycles', type=int, default=1)
     parser.add_argument('--nb-train-steps', type=int, default=50)  # per epoch cycle and MPI worker
-    parser.add_argument('--nb-eval-steps', type=int, default=100)  # per epoch cycle and MPI worker
-    parser.add_argument('--nb-rollout-steps', type=int, default=100)  # per epoch cycle and MPI worker
+    parser.add_argument('--nb-eval-steps', type=int, default=1000)  # per epoch cycle and MPI worker
+    parser.add_argument('--nb-rollout-steps', type=int, default=1000)  # per epoch cycle and MPI worker
     parser.add_argument('--noise-type', type=str, default='adaptive-param_0.2')  # choices are adaptive-param_xx, ou_xx, normal_xx, none
     parser.add_argument('--num-timesteps', type=int, default=None)
+    boolean_flag(parser, 'evaluation', default=True)
     parser.add_argument('--action-dim', type=int, default=2)
-    boolean_flag(parser, 'evaluation', default=False)
+    parser.add_argument('--model-path', type=str, default="/home/drl/PycharmProjects/DeployedProjects/CR_CPG_RL/Hyper_lab/log-files/AWS_log_files/openai-2018-09-11-10-02/trained_variables9.ckpt")
     args = parser.parse_args()
-    print(args)
     # we don't directly specify timesteps for this script, so make sure that if we do specify them
     # they agree with the other parameters
     if args.num_timesteps is not None:
@@ -121,7 +117,6 @@ def parse_args():
     dict_args = vars(args)
     del dict_args['num_timesteps']
     return dict_args
-    
 
 import os.path as osp
 import json
@@ -131,10 +126,8 @@ if __name__ == '__main__':
     args = parse_args()
     if MPI.COMM_WORLD.Get_rank() == 0:
         dir = osp.join('log_files',
-                       datetime.datetime.now().strftime("openai-%Y-%m-%d-%H-%M"))
+                       datetime.datetime.now().strftime("openai-%Y-%m-%d-%H-%M-%S-%f"))
         
         logger.configure(dir)
-
-    logger.info(args)
     # Run actual script.
     run(**args)

@@ -120,26 +120,26 @@ def train(env, nb_epochs, nb_epoch_cycles, render_eval, reward_scale, render, pa
                     epoch_actor_losses.append(al)
                     agent.update_target_net()
 
-            # Evaluate.
-            eval_episode_rewards = []
-            eval_qs = []
-            if eval_env is not None:
-                eval_episode_reward = 0.
-                for t_rollout in range(nb_eval_steps):
-                    eval_action, eval_q = agent.pi(eval_obs, apply_noise=True, compute_Q=True)
-                    eval_obs, eval_r, eval_done, eval_info = eval_env.step(max_action * eval_action)  # scale for execution in env (as far as DDPG is concerned, every action is in [-1, 1])
-                    if render_eval:
-                        eval_env.render()
-                    eval_episode_reward += eval_r
-
-                    eval_qs.append(eval_q)
-                    if eval_done:
-                        eval_obs = eval_env.reset()
-                        eval_episode_rewards.append(eval_episode_reward)
-                        eval_episode_rewards_history.append(eval_episode_reward)
-                        eval_episode_reward = 0.
-                        
-                        print('eval/return = ', np.mean(eval_episode_rewards))
+                # Evaluate.
+                eval_episode_rewards = []
+                eval_qs = []
+                if eval_env is not None:
+                    eval_episode_reward = 0.
+                    for t_rollout in range(nb_eval_steps):
+                        eval_action, eval_q = agent.pi(eval_obs, apply_noise=False, compute_Q=True)
+                        eval_obs, eval_r, eval_done, eval_info = eval_env.step(max_action * eval_action)  # scale for execution in env (as far as DDPG is concerned, every action is in [-1, 1])
+                        if render_eval:
+                            eval_env.render()
+                        eval_episode_reward += eval_r
+    
+                        eval_qs.append(eval_q)
+                        if eval_done:
+                            eval_obs = eval_env.reset()
+                            eval_episode_rewards.append(eval_episode_reward)
+                            eval_episode_rewards_history.append(eval_episode_reward)
+                            eval_episode_reward = 0.
+                            
+                            print('eval/return = ', np.mean(eval_episode_rewards))
 
             mpi_size = MPI.COMM_WORLD.Get_size()
             # Log stats.
@@ -164,11 +164,11 @@ def train(env, nb_epochs, nb_epoch_cycles, render_eval, reward_scale, render, pa
             print('rollout/return = ', combined_stats['rollout/return'])
             ##Evaluation statistics.
            # print('eval/return= ', np.mean(eval_episode_rewards))
-            # if eval_env is not None:
-            #     combined_stats['eval/return'] = np.mean(eval_episode_rewards)
-            #     combined_stats['eval/return_history'] = np.mean(eval_episode_rewards_history)
-            #     combined_stats['eval/Q'] = np.mean(eval_qs)
-            #     combined_stats['eval/episodes'] = len(eval_episode_rewards)
+            if eval_env is not None:
+                combined_stats['eval/return'] =  eval_episode_rewards
+                combined_stats['eval/return_history'] = np.mean(eval_episode_rewards_history)
+                combined_stats['eval/Q'] =  eval_qs
+                combined_stats['eval/episodes'] = len(eval_episode_rewards)
             def as_scalar(x):
                 if isinstance(x, np.ndarray):
                     assert x.size == 1

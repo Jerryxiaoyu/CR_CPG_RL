@@ -137,6 +137,9 @@ def load_results(dir):
     return df
 
 def test_monitor():
+    import pandas
+    import os
+    import uuid
     env = gym.make("CartPole-v1")
     env.seed(0)
     mon_file = "/tmp/baselines-test-%s.monitor.csv" % uuid.uuid4()
