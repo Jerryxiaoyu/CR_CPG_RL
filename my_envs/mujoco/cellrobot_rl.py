@@ -43,7 +43,7 @@ class CellRobotRLEnv(mujoco_env.MujocoEnv, utils.EzPickle):
         
     def step(self, a):
         
-        action = self.CPG_transfer(a, self.CPG_controller )
+        action = self.CPG_transfer(a)
          
         xposbefore = self.get_body_com("torso")[0]
         yposbefore = self.get_body_com("torso")[1]
@@ -122,14 +122,14 @@ class CellRobotRLEnv(mujoco_env.MujocoEnv, utils.EzPickle):
             self.sim.data.qvel.flat
         ])
 
-    def CPG_transfer(self,RL_output, CPG_controller ):
+    def CPG_transfer(self,RL_output ):
         #print(RL_output)
-        CPG_controller.update(RL_output)
+        self.CPG_controller.update(RL_output)
         # if self.t % 100 == 0:
         #     #CPG_controller.update(RL_output)
         #     print(RL_output)
         ###adjust CPG_neutron parm using RL_output
-        output_list = CPG_controller.output(state=None)
+        output_list = self.CPG_controller.output(state=None)
         target_joint_angles = np.array(output_list[1:])# CPG 第一个输出为placemarke
         cur_angles = np.concatenate([state_M.dot(self.sim.data.qpos[7:].reshape((-1, 1))).flat])
         action = PID_controller(cur_angles, target_joint_angles)

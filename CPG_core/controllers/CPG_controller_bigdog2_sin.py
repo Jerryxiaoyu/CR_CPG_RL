@@ -20,19 +20,19 @@ class CPG_network(object):
          
         
         
-        parm_list = {
+        self.parm_list = {
             0:  [0.0, 0.0, 0.0,    1.0, 0.0, 0],
         }
         
         for i in range(self.CPG_node_num):
             parm ={i+1:[0.0, 0.0, 0.0, GAIN[i], BIAS[i], PHASE[i]]}
-            parm_list.update(parm)
+            self.parm_list.update(parm)
         
         #print(parm_list)
         
         
         self.kf = position_vector[0]
-        self.num_CPG = len(parm_list)
+        self.num_CPG = len(self.parm_list)
         self.CPG_list =[]
         #self.w_ms_list = [None, 1, 1,1,1, 1, 1, 1,  1, 1,1,1, 1, 1, 1,  ]
         self.w_ms_list = [None, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, -1, 1, 1, ]
@@ -41,10 +41,10 @@ class CPG_network(object):
         
         for i in range(self.num_CPG):
             if i == 0:
-                self.CPG_list.append(CPG_Sinneutron(0, master_nuron = None, param=parm_list[0] ,kf= self.kf, w_ms = 0))
+                self.CPG_list.append(CPG_Sinneutron(0, master_nuron = None, param=self.parm_list[0] ,kf= self.kf, w_ms = 0))
             else:
                 self.CPG_list.append(CPG_Sinneutron(i, master_nuron=self.CPG_list[self.master_list[i]],
-                                                 param=parm_list[i], kf=self.kf, w_ms= self.w_ms_list[i]))
+                                                 param=self.parm_list[i], kf=self.kf, w_ms= self.w_ms_list[i]))
     
     def output(self, state):
         output_list = []
@@ -53,7 +53,50 @@ class CPG_network(object):
             output_list.append(cpg_n.parm['o'])
         
         return output_list
+
+    def update(self, fi_l):
+        self.kesi = 5
+        if len(fi_l) == 2:
+            
+            # f_left = 1 - (0.5 - fi_l[0]) * self.kesi
+            # f_right = 1 - (0.5 - fi_l[1]) * self.kesi
+            # self.CPG_list[2].parm['f12'] = self.parm_list[2][5] * f_left
+            # self.CPG_list[6].parm['f12'] = self.parm_list[6][5] * f_left
+            # self.CPG_list[7].parm['f12'] = self.parm_list[7][5] * f_left
+            #
+            # self.CPG_list[3].parm['f12'] = self.parm_list[3][5] * f_right
+            # self.CPG_list[8].parm['f12'] = self.parm_list[8][5] * f_right
+            # self.CPG_list[9].parm['f12'] = self.parm_list[9][5] * f_right
+            #
+            # self.CPG_list[4].parm['f12'] = self.parm_list[4][5] * f_right
+            # self.CPG_list[10].parm['f12'] = self.parm_list[10][5] * f_right
+            # self.CPG_list[11].parm['f12'] = self.parm_list[11][5] * f_right
+            #
+            # self.CPG_list[5].parm['f12'] = self.parm_list[5][5] * f_left
+            # self.CPG_list[12].parm['f12'] = self.parm_list[12][5] * f_left
+            # self.CPG_list[13].parm['f12'] = self.parm_list[13][5] * f_left
     
+            gain_left = 1 - (0.5 - fi_l[0]) * self.kesi
+            gain_right = 1 - (0.5 - fi_l[1]) * self.kesi
+    
+            self.CPG_list[3].parm['R1'] = self.parm_list[3][3] * gain_left
+            self.CPG_list[4].parm['R1'] = self.parm_list[4][3] * gain_left
+            self.CPG_list[5].parm['R1'] = self.parm_list[5][3] * gain_left
+    
+            self.CPG_list[6].parm['R1'] = self.parm_list[6][3] * gain_left
+            self.CPG_list[7].parm['R1'] = self.parm_list[7][3] * gain_left
+            self.CPG_list[8].parm['R1'] = self.parm_list[8][3] * gain_left
+    
+            self.CPG_list[9].parm['R1'] = self.parm_list[9][3] * gain_right
+            self.CPG_list[10].parm['R1'] = self.parm_list[10][3] * gain_right
+            self.CPG_list[11].parm['R1'] = self.parm_list[11][3] * gain_right
+    
+            self.CPG_list[12].parm['R1'] = self.parm_list[12][3] * gain_right
+            self.CPG_list[13].parm['R1'] = self.parm_list[13][3] * gain_right
+            self.CPG_list[14].parm['R1'] = self.parm_list[14][3] * gain_right
+
+        else:
+            assert 'RL output error'
 # import numpy as np
 # position_vector = np.zeros(40)
 # position_vector[0]=1

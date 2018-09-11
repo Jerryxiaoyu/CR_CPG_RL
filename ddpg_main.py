@@ -88,7 +88,7 @@ from my_envs.mujoco import *
 def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('--env-id', type=str, default='CellRobotRLEnv-v0') #CellRobotRLEnv-v0   HalfCheetah-v2 CellRobotRLEnv
+    parser.add_argument('--env-id', type=str, default='CellRobotRLBigdog2Env-v0') #CellRobotRLEnv-v0   HalfCheetah-v2 CellRobotRLEnv
     boolean_flag(parser, 'render-eval', default=False)
     boolean_flag(parser, 'layer-norm', default=True)
     boolean_flag(parser, 'render', default=False)
