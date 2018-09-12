@@ -58,15 +58,16 @@ def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     
    
-    parser.add_argument('--env-id', help='environment ID', type=str, default='CellRobotRLEnv-v0')
+    parser.add_argument('--env', help='environment ID', type=str, default='CellRobotRLEnv-v0')
     parser.add_argument('--seed', help='RNG seed', type=int, default=0)
 
     parser.add_argument('--nsteps', type=int, default=2048)
     parser.add_argument('--nminibatches', type=int, default=int(1024))
     parser.add_argument('--noptepochs', type=int, default=int(10))
     parser.add_argument('--num-timesteps', type=int, default=int(1e6))
-    
-    args = mujoco_arg_parser().parse_args()
+
+    args = parser.parse_args()
+    print(args)
     logger.configure(dir)
     train(args.env, num_timesteps=args.num_timesteps, seed=args.seed, nsteps = args.nsteps,nminbatches=args.nminibatches, noptepochs=args.noptepochs)
 
