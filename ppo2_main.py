@@ -58,7 +58,7 @@ def main():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     
    
-    parser.add_argument('--env', help='environment ID', type=str, default='CellRobotRLEnv-v0')
+    parser.add_argument('--env-id', help='environment ID', type=str, default='CellRobotRLEnv-v0')
     parser.add_argument('--seed', help='RNG seed', type=int, default=0)
 
     parser.add_argument('--nsteps', type=int, default=2048)

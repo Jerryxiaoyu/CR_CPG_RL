@@ -84,7 +84,7 @@ from my_envs.mujoco import *
 def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('--env-id', type=str, default='CellRobotRLHrEnv-v0') #CellRobotRLEnv-v0   HalfCheetah-v2
+    parser.add_argument('--env-id', type=str, default='CellRobotRLEnv-v0') #CellRobotRLEnv-v0   HalfCheetah-v2
     boolean_flag(parser, 'render-eval', default=True)
     boolean_flag(parser, 'layer-norm', default=True)
     boolean_flag(parser, 'render', default=False)
@@ -92,7 +92,7 @@ def parse_args():
     boolean_flag(parser, 'normalize-observations', default=True)
     parser.add_argument('--seed', help='RNG seed', type=int, default=0)
     parser.add_argument('--critic-l2-reg', type=float, default=1e-3)
-    parser.add_argument('--batch-size', type=int, default=512)  # per MPI worker
+    parser.add_argument('--batch-size', type=int, default=64)  # per MPI worker
     parser.add_argument('--actor-lr', type=float, default=1e-4)
     parser.add_argument('--critic-lr', type=float, default=1e-3)
     boolean_flag(parser, 'popart', default=False)
@@ -104,11 +104,11 @@ def parse_args():
     parser.add_argument('--nb-train-steps', type=int, default=50)  # per epoch cycle and MPI worker
     parser.add_argument('--nb-eval-steps', type=int, default=1000)  # per epoch cycle and MPI worker
     parser.add_argument('--nb-rollout-steps', type=int, default=1000)  # per epoch cycle and MPI worker
-    parser.add_argument('--noise-type', type=str, default='adaptive-param_0.2')  # choices are adaptive-param_xx, ou_xx, normal_xx, none
+    parser.add_argument('--noise-type', type=str, default='normal_0.2')  # choices are adaptive-param_xx, ou_xx, normal_xx, none
     parser.add_argument('--num-timesteps', type=int, default=None)
     boolean_flag(parser, 'evaluation', default=True)
     parser.add_argument('--action-dim', type=int, default=2)
-    parser.add_argument('--model-path', type=str, default="/home/drl/PycharmProjects/DeployedProjects/CR_CPG_RL/Hyper_lab/log-files/AWS_log_files/openai-2018-09-11-10-02/trained_variables9.ckpt")
+    parser.add_argument('--model-path', type=str, default="/home/drl/PycharmProjects/DeployedProjects/CR_CPG_RL/Hyper_lab/log-files/AWS_log_files/Sep_11DDPG_rl_Exp1/CellRobotRLEnv-v0/openai-2018-09-11-15-07-22-166791/trained_variables49.ckpt")
     args = parser.parse_args()
     # we don't directly specify timesteps for this script, so make sure that if we do specify them
     # they agree with the other parameters

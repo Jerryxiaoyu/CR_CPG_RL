@@ -7,7 +7,7 @@ class VG(VariantGenerator):
     
     @variant
     def env_name(self):
-        return [ 'CellRobotRLEnv-v0'   ]  # 'Cellrobot2Env-v0','CellrobotSnakeEnv-v0' , 'CellrobotSnake2Env-v0','CellrobotButterflyEnv-v0'
+        return [ 'CellRobotRLEnv-v0',   ]  # 'Cellrobot2Env-v0','CellrobotSnakeEnv-v0' , 'CellrobotSnake2Env-v0','CellrobotButterflyEnv-v0'
     @variant
     def log_std(self):
         return [-3,0 ]
@@ -31,7 +31,7 @@ class VG(VariantGenerator):
 
     @variant
     def action_dim(self):
-        return [ 2,4 ]
+        return [ 2  ]
  
     
 exp_id = 1
@@ -93,13 +93,12 @@ for v in variants:
 
     os.system("python3  ../examples/ppo_gym_rl.py " +
               " --seed " + str(seed) +
-              " --env-name " + str(env_name) +
-              " --log-std " + str(log_std) +
-              " --learning-rate " + str(learning_rate) +
-              " --num-threads " + str(num_threads) +
-              " --min-batch-size " + str(min_batch_size) +
-              " --max-iter-num " + str(max_iter_num) +
-              " --action_dim " + str(action_dim)
+              " --env-id " + str(env_name) +
+              " --nsteps " + str(nsteps) +
+              " --nminibatches " + str(nminibatches) +
+              " --noptepochs " + str(noptepochs) +
+              " --num-timesteps " + str(num-timesteps) +
+              
  
               )
      
