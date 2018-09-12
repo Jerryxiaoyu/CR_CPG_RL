@@ -12,7 +12,7 @@ import datetime
 dir = os.path.join(os.getcwd(),'log-files',
                    datetime.datetime.now().strftime("ppo-%Y-%m-%d-%H-%M-%S-%f"))
 
-def train(env_id, num_timesteps, seed, nsteps=2048, nminbatches =1024, noptepochs = 10):
+def train(env_id, num_timesteps, seed, nsteps=2048, nminbatches =1024, noptepochs = 10,ncpu=8):
     from test.baselines.common import set_global_seeds
     from test.baselines.common.vec_env.vec_normalize import VecNormalize
     from test.baselines.ppo2 import ppo2
@@ -21,7 +21,7 @@ def train(env_id, num_timesteps, seed, nsteps=2048, nminbatches =1024, noptepoch
     import tensorflow as tf
     
     from test.baselines.common.vec_env.dummy_vec_env import DummyVecEnv
-    ncpu = 8
+    ncpu = ncpu
     config = tf.ConfigProto(allow_soft_placement=True,
                             intra_op_parallelism_threads=ncpu,
                             inter_op_parallelism_threads=ncpu)
@@ -65,11 +65,12 @@ def main():
     parser.add_argument('--nminibatches', type=int, default=int(1024))
     parser.add_argument('--noptepochs', type=int, default=int(10))
     parser.add_argument('--num-timesteps', type=int, default=int(1e6))
-
+    parser.add_argument('--ncpu', type=int, default=8)
     args = parser.parse_args()
     print(args)
     logger.configure(dir)
-    train(args.env, num_timesteps=args.num_timesteps, seed=args.seed, nsteps = args.nsteps,nminbatches=args.nminibatches, noptepochs=args.noptepochs)
+    train(args.env, num_timesteps=args.num_timesteps, seed=args.seed, nsteps = args.nsteps,nminbatches=args.nminibatches,
+          noptepochs=args.noptepochs, ncpu = args.ncpu)
 
 
 if __name__ == '__main__':

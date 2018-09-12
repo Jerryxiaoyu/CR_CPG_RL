@@ -27,6 +27,7 @@ class VG(VariantGenerator):
 
  
 exp_id = 1
+ncpu = 32
 EXP_NAME ='PPO_rl'
 group_note ="************ABOUT THIS EXPERIMENT****************\n" \
             "测试所有环境是否可用!" \
@@ -89,7 +90,8 @@ for v in variants:
               " --nsteps " + str(nsteps) +
               " --nminibatches " + str(nminibatches) +
               " --noptepochs " + str(noptepochs) +
-              " --num-timesteps " + str(num_timesteps)
+              " --num-timesteps " + str(num_timesteps)+
+              " --ncpu "+str(ncpu)
  
               )
      
