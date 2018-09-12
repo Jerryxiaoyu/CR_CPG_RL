@@ -9,7 +9,7 @@ from collections import deque
 from test.baselines.common import explained_variance
 from test.baselines.common.runners import AbstractEnvRunner
 from gym import error, spaces
-
+import datetime
 T_GAP =100
 class Model(object):
     def __init__(self, *, policy, ob_space, ac_space, nbatch_act, nbatch_train,
@@ -181,6 +181,7 @@ def learn(*, policy, env, nsteps, total_timesteps, ent_coef, lr,
     tfirststart = time.time()
 
     nupdates = total_timesteps//nbatch
+    print('total updates = ',nupdates)
     for update in range(1, nupdates+1):
         assert nbatch % nminibatches == 0
         nbatch_train = nbatch // nminibatches
@@ -221,6 +222,7 @@ def learn(*, policy, env, nsteps, total_timesteps, ent_coef, lr,
         fps = int(nbatch / (tnow - tstart))
         if update % log_interval == 0 or update == 1:
             ev = explained_variance(values, returns)
+            print(datetime.datetime.now().strftime("%Y-%m-%d-%H-%M"))
             logger.logkv("serial_timesteps", update*nsteps)
             logger.logkv("nupdates", update)
             logger.logkv("total_timesteps", update*nbatch)

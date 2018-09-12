@@ -10,11 +10,11 @@ class VG(VariantGenerator):
         return [ 'CellRobotRLEnv-v0',   ]  # 'Cellrobot2Env-v0','CellrobotSnakeEnv-v0' , 'CellrobotSnake2Env-v0','CellrobotButterflyEnv-v0'
     @variant
     def nsteps(self):
-        return [ 2048 ]
+        return [ 20480 ]
     
     @variant
     def nminibatches(self):
-        return [ 1024 ]
+        return [ 10240 ]
 
     @variant
     def noptepochs(self):
@@ -22,7 +22,7 @@ class VG(VariantGenerator):
     
     @variant
     def num_timesteps(self):
-        return [ 1e6 ]
+        return [ 1000000 ]
  
 
  
@@ -89,7 +89,7 @@ for v in variants:
               " --nsteps " + str(nsteps) +
               " --nminibatches " + str(nminibatches) +
               " --noptepochs " + str(noptepochs) +
-              " --num-timesteps " + str(num_timesteps) +
+              " --num-timesteps " + str(num_timesteps)
  
               )
      

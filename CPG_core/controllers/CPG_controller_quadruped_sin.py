@@ -136,8 +136,8 @@ class CPG_network(object):
             
         elif len(fi_l) ==4:
 
-            f_left = 1 - (0.5 - fi_l[0]) * self.kesi
-            f_right = 1 - (0.5 - fi_l[1] ) * self.kesi
+            f_left = 1 - (0.5 - fi_l[0]) * 2
+            f_right = 1 - (0.5 - fi_l[1] ) * 2
             gain_left= 1 - (0.5 - fi_l[2]) * self.kesi
             gain_right = 1 - (0.5 -fi_l[3] ) * self.kesi
 
@@ -145,33 +145,33 @@ class CPG_network(object):
             self.CPG_list[6].parm['f12'] = self.parm_list[6][5] * f_left
             self.CPG_list[7].parm['f12'] = self.parm_list[7][5] * f_left
 
-            self.CPG_list[3].parm['f12'] = self.parm_list[3][5] * f_right
-            self.CPG_list[8].parm['f12'] = self.parm_list[8][5] * f_right
-            self.CPG_list[9].parm['f12'] = self.parm_list[9][5] * f_right
+            self.CPG_list[3].parm['f12'] = self.parm_list[3][5] * f_left
+            self.CPG_list[8].parm['f12'] = self.parm_list[8][5] * f_left
+            self.CPG_list[9].parm['f12'] = self.parm_list[9][5] * f_left
 
             self.CPG_list[4].parm['f12'] = self.parm_list[4][5] * f_right
             self.CPG_list[10].parm['f12'] = self.parm_list[10][5] * f_right
             self.CPG_list[11].parm['f12'] = self.parm_list[11][5] * f_right
 
-            self.CPG_list[5].parm['f12'] = self.parm_list[5][5] * f_left
-            self.CPG_list[12].parm['f12'] = self.parm_list[12][5] * f_left
-            self.CPG_list[13].parm['f12'] = self.parm_list[13][5] * f_left
+            self.CPG_list[5].parm['f12'] = self.parm_list[5][5] * f_right
+            self.CPG_list[12].parm['f12'] = self.parm_list[12][5] * f_right
+            self.CPG_list[13].parm['f12'] = self.parm_list[13][5] * f_right
 #           #gain
             self.CPG_list[2].parm['R1'] = self.parm_list[2][3] * gain_left
             self.CPG_list[6].parm['R1'] = self.parm_list[6][3] * gain_left
             self.CPG_list[7].parm['R1'] = self.parm_list[7][3] * gain_left
 
-            self.CPG_list[3].parm['R1'] = self.parm_list[3][3] * gain_right
-            self.CPG_list[8].parm['R1'] = self.parm_list[8][3] * gain_right
-            self.CPG_list[9].parm['R1'] = self.parm_list[9][3] * gain_right
+            self.CPG_list[3].parm['R1'] = self.parm_list[3][3] * gain_left
+            self.CPG_list[8].parm['R1'] = self.parm_list[8][3] * gain_left
+            self.CPG_list[9].parm['R1'] = self.parm_list[9][3] * gain_left
 
             self.CPG_list[4].parm['R1'] = self.parm_list[4][3] * gain_right
             self.CPG_list[10].parm['R1'] = self.parm_list[10][3] * gain_right
             self.CPG_list[11].parm['R1'] = self.parm_list[11][3] * gain_right
 
-            self.CPG_list[5].parm['R1'] = self.parm_list[5][3] * gain_left
-            self.CPG_list[12].parm['R1'] = self.parm_list[12][3] * gain_left
-            self.CPG_list[13].parm['R1'] = self.parm_list[13][3] * gain_left
+            self.CPG_list[5].parm['R1'] = self.parm_list[5][3] * gain_right
+            self.CPG_list[12].parm['R1'] = self.parm_list[12][3] * gain_right
+            self.CPG_list[13].parm['R1'] = self.parm_list[13][3] * gain_right
             
     
         # if len(fi_l) == 4:
