@@ -84,7 +84,7 @@ for v in variants:
     
     
 
-    os.system("python3  ppo2_main.py " +
+    os.system("python  ppo2_main.py " +
               " --seed " + str(seed) +
               " --env " + str(env_name) +
               " --nsteps " + str(nsteps) +
