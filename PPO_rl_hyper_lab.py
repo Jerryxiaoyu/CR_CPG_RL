@@ -9,31 +9,23 @@ class VG(VariantGenerator):
     def env_name(self):
         return [ 'CellRobotRLEnv-v0',   ]  # 'Cellrobot2Env-v0','CellrobotSnakeEnv-v0' , 'CellrobotSnake2Env-v0','CellrobotButterflyEnv-v0'
     @variant
-    def log_std(self):
-        return [-3,0 ]
+    def nsteps(self):
+        return [ 2048 ]
     
     @variant
-    def learning_rate(self):
-        return [ 3e-4,   ]
+    def nminibatches(self):
+        return [ 1024 ]
 
     @variant
-    def num_threads(self):
-        return [1]
+    def noptepochs(self):
+        return [10 ]
     
     @variant
-    def min_batch_size(self):
-        return [ 2048,20480 ]
-
-    @variant
-    def max_iter_num(self):
-        return [100 ]
+    def num_timesteps(self):
+        return [ 1e6 ]
  
 
-    @variant
-    def action_dim(self):
-        return [ 2  ]
  
-    
 exp_id = 1
 EXP_NAME ='PPO_rl'
 group_note ="************ABOUT THIS EXPERIMENT****************\n" \
@@ -82,23 +74,22 @@ for v in variants:
     print(v)
     # load parm
     env_name = v['env_name']
-    log_std = v['log_std']
-    learning_rate = v['learning_rate']
-    num_threads = v['num_threads']
-    min_batch_size = v['min_batch_size']
-    max_iter_num = v['max_iter_num']
+    nsteps = v['nsteps']
+    nminibatches = v['nminibatches']
+    noptepochs = v['noptepochs']
+    
+    num_timesteps = v['num_timesteps']
 
-    action_dim = v['action_dim']
+    
     
 
-    os.system("python3  ../examples/ppo_gym_rl.py " +
+    os.system("python3  ppo2_main.py " +
               " --seed " + str(seed) +
-              " --env-id " + str(env_name) +
+              " --env " + str(env_name) +
               " --nsteps " + str(nsteps) +
               " --nminibatches " + str(nminibatches) +
               " --noptepochs " + str(noptepochs) +
-              " --num-timesteps " + str(num-timesteps) +
-              
+              " --num-timesteps " + str(num_timesteps) +
  
               )
      
