@@ -79,7 +79,7 @@ def train(env, nb_epochs, nb_epoch_cycles, render_eval, reward_scale, render, pa
                     # Execute next action.
                     if rank == 0 and render:
                         env.render()
-                     
+                    #print(action)
                     new_obs, r, done, info = env.step(max_action * action)  # scale for execution in env (as far as DDPG is concerned, every action is in [-1, 1])
                     t += 1
                     episode_reward += r
@@ -164,8 +164,8 @@ def train(env, nb_epochs, nb_epoch_cycles, render_eval, reward_scale, render, pa
             print('rollout/return = ', combined_stats['rollout/return'])
             ##Evaluation statistics.
            # print('eval/return= ', np.mean(eval_episode_rewards))
-            if eval_env is not None:
-                combined_stats['eval/return'] =   eval_episode_rewards
+            #if eval_env is not None:
+                #combined_stats['eval/return'] =   eval_episode_rewards
                 # combined_stats['eval/return_history'] = np.mean(eval_episode_rewards_history)
                 # combined_stats['eval/Q'] =  eval_qs
                 # combined_stats['eval/episodes'] = len(eval_episode_rewards)

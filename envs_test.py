@@ -5,7 +5,7 @@ from my_envs.mujoco import *
 #from my_gym_envs.mujoco import *
 
 #-1.5808 0 1.5808
-env = gym.make('CellRobotRLBigdog2Env-v0')  # Swimmer2-v2  SpaceInvaders-v0  CellrobotBigdog2Env-v0
+env = gym.make('CellRobotRLEnv-v0')  # Swimmer2-v2  SpaceInvaders-v0  CellrobotBigdog2Env-v0
 
 
 # env = gym.make('FetchPickAndPlace-v1')

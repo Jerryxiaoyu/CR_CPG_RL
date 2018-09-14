@@ -9,7 +9,7 @@ class VG(VariantGenerator):
     
     @variant
     def env_name(self):
-        return ['CellRobotRLHrEnv-v0', 'CellRobotRLBigdog2Env-v0']  # CellRobotRLHrEnv-v0  'CellRobotRLEnv-v0'
+        return ['CellRobotRL2Env-v0' ]  # CellRobotRLHrEnv-v0  'CellRobotRLEnv-v0'
     
     @variant
     def batch_size(self):
@@ -47,12 +47,15 @@ class VG(VariantGenerator):
     def noise_type(self):
         return ['normal_0.2', 'adaptive-param_0.2']
 
+    @variant
+    def out_layer(self):
+        return ['tanh' ]
 
-NOHUP = True
-exp_id = 2
+NOHUP = False
+exp_id = 3
 n_cpu = 5
 
-EXP_NAME = 'DDPG_rl'
+EXP_NAME = 'DDPG_rl2'
 group_note = "************ABOUT THIS EXPERIMENT****************\n" \
              "测试所有环境是否可用!" \
              "测试 不同fitness 对cellrobot的影响"
@@ -111,6 +114,8 @@ for v in variants:
     action_dim = v['action_dim']
     noise_type = v['noise_type']
     nb_rollout_steps = v['nb_rollout_steps']
+    out_layer = v['out_layer']
+    
     if NOHUP:
         nohup_prex = "nohup "
     else:
@@ -128,7 +133,8 @@ for v in variants:
               " --action-dim " + str(action_dim) +
               " --noise-type " + str(noise_type) +
               " --nb-rollout-steps " + str(nb_rollout_steps) +
-              " --group-dir " + str(group_dir)
-              +
-              " >log-files/ddpg.log </dev/null 2>&1 &"
+              " --group-dir " + str(group_dir)+
+              " --out-layer " + str(out_layer)
+              # +
+              # " >log-files/ddpg.log </dev/null 2>&1 &"
               )

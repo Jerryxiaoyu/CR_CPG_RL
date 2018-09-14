@@ -17,7 +17,7 @@ import gym
 import tensorflow as tf
 from mpi4py import MPI
 
-def run(env_id, seed, noise_type, layer_norm, evaluation,action_dim=2, **kwargs):
+def run(env_id, seed, noise_type, layer_norm, evaluation, out_layer, action_dim=2,  **kwargs):
     # Configure things.
     rank = MPI.COMM_WORLD.Get_rank()
     if rank != 0:
@@ -29,9 +29,9 @@ def run(env_id, seed, noise_type, layer_norm, evaluation,action_dim=2, **kwargs)
 
     if evaluation and rank==0:
         eval_env = gym.make(env_id)
-        eval_env = bench.Monitor(eval_env, os.path.join(logger.get_dir(), 'gym_eval'))
-        #os.mkdir(os.path.join(logger.get_dir(), 'model'))
-        #eval_env = gym.wrappers.Monitor(eval_env, os.path.join(logger.get_dir(), 'model'), force=True )
+        #eval_env = bench.Monitor(eval_env, os.path.join(logger.get_dir(), 'gym_eval'))
+        os.mkdir(os.path.join(logger.get_dir(), 'model'))
+        eval_env = gym.wrappers.Monitor(eval_env, os.path.join(logger.get_dir(), 'model'), force=True )
         
         env = bench.Monitor(env, None)
     else:
@@ -60,7 +60,7 @@ def run(env_id, seed, noise_type, layer_norm, evaluation,action_dim=2, **kwargs)
     # Configure components.
     memory = Memory(limit=int(1e6), action_shape=(nb_actions,), observation_shape=env.observation_space.shape)
     critic = Critic(layer_norm=layer_norm)
-    actor = Actor(nb_actions, layer_norm=layer_norm)
+    actor = Actor(nb_actions, layer_norm=layer_norm, out_layer = out_layer)
 
     # Seed everything to make things reproducible.
     seed = seed + 1000000 * rank
@@ -88,7 +88,7 @@ from my_envs.mujoco import *
 def parse_args():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('--env-id', type=str, default='CellRobotRLBigdog2Env-v0') #CellRobotRLEnv-v0   HalfCheetah-v2 CellRobotRLEnv CellRobotRLBigdog2Env-v0
+    parser.add_argument('--env-id', type=str, default='CellRobotRL2Env-v0') #CellRobotRLEnv-v0   HalfCheetah-v2 CellRobotRLEnv CellRobotRLBigdog2Env-v0
     boolean_flag(parser, 'render-eval', default=False)
     boolean_flag(parser, 'layer-norm', default=True)
     boolean_flag(parser, 'render', default=False)
@@ -108,11 +108,12 @@ def parse_args():
     parser.add_argument('--nb-train-steps', type=int, default=50)  # per epoch cycle and MPI worker
     parser.add_argument('--nb-eval-steps', type=int, default=200)  # per epoch cycle and MPI worker
     parser.add_argument('--nb-rollout-steps', type=int, default=1000)  # per epoch cycle and MPI worker
-    parser.add_argument('--noise-type', type=str, default='adaptive-param_0.2')  # choices are adaptive-param_xx, ou_xx, normal_xx, none
+    parser.add_argument('--noise-type', type=str, default='normal_0.2')  # choices are adaptive-param_xx, ou_xx, normal_xx, none
     parser.add_argument('--num-timesteps', type=int, default=None)
     parser.add_argument('--action-dim', type=int, default=2)
     parser.add_argument('--group-dir', type=str, default=None)
-    boolean_flag(parser, 'evaluation', default=True)
+    parser.add_argument('--out-layer', type=str, default='tanh')  #sigmoid
+    boolean_flag(parser, 'evaluation', default=False)
     args = parser.parse_args()
     print(args)
     

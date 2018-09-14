@@ -20,10 +20,17 @@ class Model(object):
 
 
 class Actor(Model):
-    def __init__(self, nb_actions, name='actor', layer_norm=True):
+    def __init__(self, nb_actions, name='actor', layer_norm=True, out_layer = 'sigmoid'):
         super(Actor, self).__init__(name=name)
         self.nb_actions = nb_actions
         self.layer_norm = layer_norm
+        if out_layer == 'sigmoid':
+            self.out_layer_fun = tf.nn.sigmoid
+        elif out_layer =='tanh':
+            self.out_layer_fun = tf.nn.tanh
+        else:
+            assert  print('Actor out layer error~')
+            
 
     def __call__(self, obs, reuse=False):
         with tf.variable_scope(self.name) as scope:
@@ -43,7 +50,8 @@ class Actor(Model):
             
             x = tf.layers.dense(x, self.nb_actions, kernel_initializer=tf.random_uniform_initializer(minval=-3e-3, maxval=3e-3))
             #x = tf.nn.tanh(x)
-            x = tf.nn.sigmoid(x) #wogaide !~!
+            
+            x = self.out_layer_fun(x) #wogaide !~!
         return x
 
 

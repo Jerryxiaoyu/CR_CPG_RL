@@ -34,7 +34,7 @@ from my_envs.mujoco.cellrobot_butterfly import CellRobotButterflyEnv
 from my_envs.mujoco.cellrobot_rl import CellRobotRLEnv
 from my_envs.mujoco.cellrobot_rl_hr import CellRobotRLHrEnv
 from my_envs.mujoco.cellrobot_Bigdog2_rl import CellRobotRLBigDog2Env
-
+from my_envs.mujoco.cellrobot_rl2 import CellRobotRL2Env
 
 
 register(
@@ -157,6 +157,12 @@ register(
 register(
     id='CellRobotRLBigdog2Env-v0',
     entry_point='my_envs.mujoco:CellRobotRLBigDog2Env ',
+    max_episode_steps=1000,
+    reward_threshold=6000.0,
+)
+register(
+    id='CellRobotRL2Env-v0',
+    entry_point='my_envs.mujoco:CellRobotRL2Env ',
     max_episode_steps=1000,
     reward_threshold=6000.0,
 )

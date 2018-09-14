@@ -9,7 +9,7 @@ from CPG_core.math.transformation import euler_from_quaternion,quaternion_invers
 
 # choose your CPG network
 # from CPG_core.controllers.CPG_controller_quadruped_sin import CPG_network
-from CPG_core.controllers.CPG_controller_quadruped_sin import CPG_network
+from CPG_core.controllers.CPG_controller_quadruped_sin2 import CPG_network
 
 state_M =np.array([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
                    [0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
@@ -29,9 +29,9 @@ position_vector = [0.9005710154022419, 0.19157649858525766, 0.20363844865472536,
 
 #position_vector =[0.9858483561978868, -0.26776244703081553, 0.06341770508024377, 0.1803821478742611, -0.737421299071324, 0.36522978966198716, 0.5044235400002197, 0.40991580439035835, -0.8443021471919203, 0.04228059212402413, 0.7554420347469687, -0.5639823285279588, -0.2670696994557711, 0.15494509911424004, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0018091287679612926, 0.0, 0.0, 0.0025530353527089796, 0.0, 0.0, 0.0, 0.0, -0.5828629636313896, -1.0350978973515126, 0.2869339954154033, -0.14215879560893563, -1.0662735162976038, -0.3594286719244508, -1.3610669510250777, 1.1259577909453355, 0.7737809075621813, -0.3512915481737431, 0.00528021283053004, 0.6727569875008399, -0.10960030747213767,]
 
-class CellRobotRLEnv(mujoco_env.MujocoEnv, utils.EzPickle):
+class CellRobotRL2Env(mujoco_env.MujocoEnv, utils.EzPickle):
     def __init__(self):
-        self.goal_theta =   pi/6.0
+        self.goal_theta =   -pi/4.0
         self.quat_init = [0.49499825, -0.49997497, 0.50500175, 0.49997499]
         self.t =0
         self.CPG_controller = CPG_network(position_vector)
